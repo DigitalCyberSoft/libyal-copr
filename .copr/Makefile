@@ -121,10 +121,10 @@ srpm:
 	@echo 'cd ..' >> libyal-bundle.spec
 	@echo '' >> libyal-bundle.spec
 	@echo '# Build remaining libraries in dependency order' >> libyal-bundle.spec
-	@echo 'for lib in libcthreads-$(LIBCTHREADS_VERSION) libcdata-$(LIBCDATA_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libclocale-$(LIBCLOCALE_VERSION) libcnotify-$(LIBCNOTIFY_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libuna-$(LIBUNA_VERSION) libcfile-$(LIBCFILE_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libcpath-$(LIBCPATH_VERSION) libbfio-$(LIBBFIO_VERSION) \\' >> libyal-bundle.spec
+	@echo 'for lib in libcthreads-$(LIBCTHREADS_VERSION) libcdata-$(LIBCDATA_VERSION) \' >> libyal-bundle.spec
+	@echo '           libclocale-$(LIBCLOCALE_VERSION) libcnotify-$(LIBCNOTIFY_VERSION) \' >> libyal-bundle.spec
+	@echo '           libuna-$(LIBUNA_VERSION) libcfile-$(LIBCFILE_VERSION) \' >> libyal-bundle.spec
+	@echo '           libcpath-$(LIBCPATH_VERSION) libbfio-$(LIBBFIO_VERSION) \' >> libyal-bundle.spec
 	@echo '           libfcache-$(LIBFCACHE_VERSION) libfguid-$(LIBFGUID_VERSION); do' >> libyal-bundle.spec
 	@echo '    cd $$lib' >> libyal-bundle.spec
 	@echo '    %configure --disable-static --enable-wide-character-type' >> libyal-bundle.spec
@@ -134,11 +134,11 @@ srpm:
 	@echo '' >> libyal-bundle.spec
 	@echo '%install' >> libyal-bundle.spec
 	@echo '# Install all libraries' >> libyal-bundle.spec
-	@echo 'for lib in libcerror-$(LIBCERROR_VERSION) libcthreads-$(LIBCTHREADS_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libcdata-$(LIBCDATA_VERSION) libclocale-$(LIBCLOCALE_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libcnotify-$(LIBCNOTIFY_VERSION) libuna-$(LIBUNA_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libcfile-$(LIBCFILE_VERSION) libcpath-$(LIBCPATH_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libbfio-$(LIBBFIO_VERSION) libfcache-$(LIBFCACHE_VERSION) \\' >> libyal-bundle.spec
+	@echo 'for lib in libcerror-$(LIBCERROR_VERSION) libcthreads-$(LIBCTHREADS_VERSION) \' >> libyal-bundle.spec
+	@echo '           libcdata-$(LIBCDATA_VERSION) libclocale-$(LIBCLOCALE_VERSION) \' >> libyal-bundle.spec
+	@echo '           libcnotify-$(LIBCNOTIFY_VERSION) libuna-$(LIBUNA_VERSION) \' >> libyal-bundle.spec
+	@echo '           libcfile-$(LIBCFILE_VERSION) libcpath-$(LIBCPATH_VERSION) \' >> libyal-bundle.spec
+	@echo '           libbfio-$(LIBBFIO_VERSION) libfcache-$(LIBFCACHE_VERSION) \' >> libyal-bundle.spec
 	@echo '           libfguid-$(LIBFGUID_VERSION); do' >> libyal-bundle.spec
 	@echo '    cd $$lib' >> libyal-bundle.spec
 	@echo '    %make_install' >> libyal-bundle.spec
