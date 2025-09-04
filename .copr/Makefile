@@ -2,20 +2,18 @@
 # This is self-contained - generates spec file and downloads sources
 
 # Version identifiers for each library
+# Note: Only including libraries that have actual GitHub releases
 LIBCERROR_VERSION = 20240413
 LIBCTHREADS_VERSION = 20240413
 LIBCDATA_VERSION = 20240414
 LIBCLOCALE_VERSION = 20240414
 LIBCNOTIFY_VERSION = 20240414
-LIBCSPLIT_VERSION = 20240414
 LIBUNA_VERSION = 20240414
 LIBCFILE_VERSION = 20240414
 LIBCPATH_VERSION = 20240414
 LIBBFIO_VERSION = 20240414
 LIBFCACHE_VERSION = 20240414
-LIBFDATA_VERSION = 20240414
 LIBFGUID_VERSION = 20240415
-LIBFVALUE_VERSION = 20240415
 
 # Bundle version (use latest library date)
 BUNDLE_VERSION = 20240415
@@ -33,16 +31,13 @@ srpm:
 	curl -L -o libcthreads-alpha-$(LIBCTHREADS_VERSION).tar.gz $(GITHUB_URL)/libcthreads/releases/download/$(LIBCTHREADS_VERSION)/libcthreads-alpha-$(LIBCTHREADS_VERSION).tar.gz
 	curl -L -o libcdata-alpha-$(LIBCDATA_VERSION).tar.gz $(GITHUB_URL)/libcdata/releases/download/$(LIBCDATA_VERSION)/libcdata-alpha-$(LIBCDATA_VERSION).tar.gz
 	curl -L -o libclocale-alpha-$(LIBCLOCALE_VERSION).tar.gz $(GITHUB_URL)/libclocale/releases/download/$(LIBCLOCALE_VERSION)/libclocale-alpha-$(LIBCLOCALE_VERSION).tar.gz
-	curl -L -o libcnotify-alpha-$(LIBCNOTIFY_VERSION).tar.gz $(GITHUB_URL)/libcnotify/releases/download/$(LIBCNOTIFY_VERSION)/libcnotify-alpha-$(LIBCNOTIFY_VERSION).tar.gz
-	curl -L -o libcsplit-alpha-$(LIBCSPLIT_VERSION).tar.gz $(GITHUB_URL)/libcsplit/releases/download/$(LIBCSPLIT_VERSION)/libcsplit-alpha-$(LIBCSPLIT_VERSION).tar.gz
+	curl -L -o libcnotify-beta-$(LIBCNOTIFY_VERSION).tar.gz $(GITHUB_URL)/libcnotify/releases/download/$(LIBCNOTIFY_VERSION)/libcnotify-beta-$(LIBCNOTIFY_VERSION).tar.gz
 	curl -L -o libuna-alpha-$(LIBUNA_VERSION).tar.gz $(GITHUB_URL)/libuna/releases/download/$(LIBUNA_VERSION)/libuna-alpha-$(LIBUNA_VERSION).tar.gz
 	curl -L -o libcfile-alpha-$(LIBCFILE_VERSION).tar.gz $(GITHUB_URL)/libcfile/releases/download/$(LIBCFILE_VERSION)/libcfile-alpha-$(LIBCFILE_VERSION).tar.gz
 	curl -L -o libcpath-alpha-$(LIBCPATH_VERSION).tar.gz $(GITHUB_URL)/libcpath/releases/download/$(LIBCPATH_VERSION)/libcpath-alpha-$(LIBCPATH_VERSION).tar.gz
 	curl -L -o libbfio-alpha-$(LIBBFIO_VERSION).tar.gz $(GITHUB_URL)/libbfio/releases/download/$(LIBBFIO_VERSION)/libbfio-alpha-$(LIBBFIO_VERSION).tar.gz
 	curl -L -o libfcache-alpha-$(LIBFCACHE_VERSION).tar.gz $(GITHUB_URL)/libfcache/releases/download/$(LIBFCACHE_VERSION)/libfcache-alpha-$(LIBFCACHE_VERSION).tar.gz
-	curl -L -o libfdata-alpha-$(LIBFDATA_VERSION).tar.gz $(GITHUB_URL)/libfdata/releases/download/$(LIBFDATA_VERSION)/libfdata-alpha-$(LIBFDATA_VERSION).tar.gz
 	curl -L -o libfguid-alpha-$(LIBFGUID_VERSION).tar.gz $(GITHUB_URL)/libfguid/releases/download/$(LIBFGUID_VERSION)/libfguid-alpha-$(LIBFGUID_VERSION).tar.gz
-	curl -L -o libfvalue-alpha-$(LIBFVALUE_VERSION).tar.gz $(GITHUB_URL)/libfvalue/releases/download/$(LIBFVALUE_VERSION)/libfvalue-alpha-$(LIBFVALUE_VERSION).tar.gz
 	
 	# Generate the spec file using echo commands
 	@echo "Generating spec file..."
@@ -61,16 +56,13 @@ srpm:
 	@echo 'Source1:        libcthreads-alpha-$(LIBCTHREADS_VERSION).tar.gz' >> libyal-bundle.spec
 	@echo 'Source2:        libcdata-alpha-$(LIBCDATA_VERSION).tar.gz' >> libyal-bundle.spec
 	@echo 'Source3:        libclocale-alpha-$(LIBCLOCALE_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source4:        libcnotify-alpha-$(LIBCNOTIFY_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source5:        libcsplit-alpha-$(LIBCSPLIT_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source6:        libuna-alpha-$(LIBUNA_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source7:        libcfile-alpha-$(LIBCFILE_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source8:        libcpath-alpha-$(LIBCPATH_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source9:        libbfio-alpha-$(LIBBFIO_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source10:       libfcache-alpha-$(LIBFCACHE_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source11:       libfdata-alpha-$(LIBFDATA_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source12:       libfguid-alpha-$(LIBFGUID_VERSION).tar.gz' >> libyal-bundle.spec
-	@echo 'Source13:       libfvalue-alpha-$(LIBFVALUE_VERSION).tar.gz' >> libyal-bundle.spec
+	@echo 'Source4:        libcnotify-beta-$(LIBCNOTIFY_VERSION).tar.gz' >> libyal-bundle.spec
+	@echo 'Source5:        libuna-alpha-$(LIBUNA_VERSION).tar.gz' >> libyal-bundle.spec
+	@echo 'Source6:        libcfile-alpha-$(LIBCFILE_VERSION).tar.gz' >> libyal-bundle.spec
+	@echo 'Source7:        libcpath-alpha-$(LIBCPATH_VERSION).tar.gz' >> libyal-bundle.spec
+	@echo 'Source8:        libbfio-alpha-$(LIBBFIO_VERSION).tar.gz' >> libyal-bundle.spec
+	@echo 'Source9:        libfcache-alpha-$(LIBFCACHE_VERSION).tar.gz' >> libyal-bundle.spec
+	@echo 'Source10:       libfguid-alpha-$(LIBFGUID_VERSION).tar.gz' >> libyal-bundle.spec
 	@echo '' >> libyal-bundle.spec
 	@echo 'BuildRequires:  gcc' >> libyal-bundle.spec
 	@echo 'BuildRequires:  make' >> libyal-bundle.spec
@@ -90,12 +82,10 @@ srpm:
 	@echo '- Data structures (libcdata)' >> libyal-bundle.spec
 	@echo '- Locale support (libclocale)' >> libyal-bundle.spec
 	@echo '- Notification support (libcnotify)' >> libyal-bundle.spec
-	@echo '- String splitting (libcsplit)' >> libyal-bundle.spec
 	@echo '- Unicode support (libuna)' >> libyal-bundle.spec
 	@echo '- File I/O abstraction (libbfio, libcfile, libcpath)' >> libyal-bundle.spec
-	@echo '- Caching support (libfcache, libfdata)' >> libyal-bundle.spec
+	@echo '- Caching support (libfcache)' >> libyal-bundle.spec
 	@echo '- GUID support (libfguid)' >> libyal-bundle.spec
-	@echo '- Value support (libfvalue)' >> libyal-bundle.spec
 	@echo '' >> libyal-bundle.spec
 	@echo '%package        devel' >> libyal-bundle.spec
 	@echo 'Summary:        Development files for libyal libraries' >> libyal-bundle.spec
@@ -119,9 +109,6 @@ srpm:
 	@echo 'tar xzf %{SOURCE8}' >> libyal-bundle.spec
 	@echo 'tar xzf %{SOURCE9}' >> libyal-bundle.spec
 	@echo 'tar xzf %{SOURCE10}' >> libyal-bundle.spec
-	@echo 'tar xzf %{SOURCE11}' >> libyal-bundle.spec
-	@echo 'tar xzf %{SOURCE12}' >> libyal-bundle.spec
-	@echo 'tar xzf %{SOURCE13}' >> libyal-bundle.spec
 	@echo '' >> libyal-bundle.spec
 	@echo '%build' >> libyal-bundle.spec
 	@echo '# Build order matters - dependencies first' >> libyal-bundle.spec
@@ -136,11 +123,9 @@ srpm:
 	@echo '# Build remaining libraries in dependency order' >> libyal-bundle.spec
 	@echo 'for lib in libcthreads-$(LIBCTHREADS_VERSION) libcdata-$(LIBCDATA_VERSION) \\' >> libyal-bundle.spec
 	@echo '           libclocale-$(LIBCLOCALE_VERSION) libcnotify-$(LIBCNOTIFY_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libcsplit-$(LIBCSPLIT_VERSION) libuna-$(LIBUNA_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libcfile-$(LIBCFILE_VERSION) libcpath-$(LIBCPATH_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libbfio-$(LIBBFIO_VERSION) libfcache-$(LIBFCACHE_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libfdata-$(LIBFDATA_VERSION) libfguid-$(LIBFGUID_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libfvalue-$(LIBFVALUE_VERSION); do' >> libyal-bundle.spec
+	@echo '           libuna-$(LIBUNA_VERSION) libcfile-$(LIBCFILE_VERSION) \\' >> libyal-bundle.spec
+	@echo '           libcpath-$(LIBCPATH_VERSION) libbfio-$(LIBBFIO_VERSION) \\' >> libyal-bundle.spec
+	@echo '           libfcache-$(LIBFCACHE_VERSION) libfguid-$(LIBFGUID_VERSION); do' >> libyal-bundle.spec
 	@echo '    cd $$lib' >> libyal-bundle.spec
 	@echo '    %configure --disable-static --enable-wide-character-type' >> libyal-bundle.spec
 	@echo '    %make_build' >> libyal-bundle.spec
@@ -151,11 +136,10 @@ srpm:
 	@echo '# Install all libraries' >> libyal-bundle.spec
 	@echo 'for lib in libcerror-$(LIBCERROR_VERSION) libcthreads-$(LIBCTHREADS_VERSION) \\' >> libyal-bundle.spec
 	@echo '           libcdata-$(LIBCDATA_VERSION) libclocale-$(LIBCLOCALE_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libcnotify-$(LIBCNOTIFY_VERSION) libcsplit-$(LIBCSPLIT_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libuna-$(LIBUNA_VERSION) libcfile-$(LIBCFILE_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libcpath-$(LIBCPATH_VERSION) libbfio-$(LIBBFIO_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libfcache-$(LIBFCACHE_VERSION) libfdata-$(LIBFDATA_VERSION) \\' >> libyal-bundle.spec
-	@echo '           libfguid-$(LIBFGUID_VERSION) libfvalue-$(LIBFVALUE_VERSION); do' >> libyal-bundle.spec
+	@echo '           libcnotify-$(LIBCNOTIFY_VERSION) libuna-$(LIBUNA_VERSION) \\' >> libyal-bundle.spec
+	@echo '           libcfile-$(LIBCFILE_VERSION) libcpath-$(LIBCPATH_VERSION) \\' >> libyal-bundle.spec
+	@echo '           libbfio-$(LIBBFIO_VERSION) libfcache-$(LIBFCACHE_VERSION) \\' >> libyal-bundle.spec
+	@echo '           libfguid-$(LIBFGUID_VERSION); do' >> libyal-bundle.spec
 	@echo '    cd $$lib' >> libyal-bundle.spec
 	@echo '    %make_install' >> libyal-bundle.spec
 	@echo '    cd ..' >> libyal-bundle.spec
@@ -181,7 +165,7 @@ srpm:
 	@echo '* Thu Jan 09 2025 COPR Builder - $(BUNDLE_VERSION)-1' >> libyal-bundle.spec
 	@echo '- Automated build from COPR' >> libyal-bundle.spec
 	@echo '- Bundle of core libyal libraries for forensics tools' >> libyal-bundle.spec
-	@echo '- Includes 14 essential libyal libraries' >> libyal-bundle.spec
+	@echo '- Includes 11 essential libyal libraries with releases' >> libyal-bundle.spec
 	
 	# Create SRPM
 	@echo "Building SRPM..."

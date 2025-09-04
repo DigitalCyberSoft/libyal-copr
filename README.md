@@ -13,7 +13,7 @@ libyal is a collection of libraries for digital forensics and data recovery. The
 
 ## Libraries Included
 
-This bundle includes 14 core libyal libraries:
+This bundle includes 11 core libyal libraries that have official releases:
 
 | Library | Purpose |
 |---------|---------|
@@ -22,15 +22,14 @@ This bundle includes 14 core libyal libraries:
 | **libcdata** | Cross-platform data structures (arrays, lists, trees) |
 | **libclocale** | Cross-platform locale support |
 | **libcnotify** | Cross-platform notification/logging support |
-| **libcsplit** | Cross-platform string splitting |
 | **libuna** | Unicode and ASCII conversion support |
 | **libcfile** | Cross-platform file I/O |
 | **libcpath** | Cross-platform path handling |
 | **libbfio** | Basic file input/output abstraction |
 | **libfcache** | File data caching |
-| **libfdata** | File data handling with caching |
 | **libfguid** | GUID/UUID support |
-| **libfvalue** | Value type support |
+
+Note: Some libyal libraries (libcsplit, libfdata, libfvalue) don't have standalone releases and are typically bundled within other libyal projects.
 
 ## Quick Installation
 
