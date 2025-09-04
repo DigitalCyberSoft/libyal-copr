@@ -96,6 +96,15 @@ srpm:
 	@echo 'The %{name}-devel package contains libraries and header files for' >> libyal-bundle.spec
 	@echo 'developing applications that use libyal libraries.' >> libyal-bundle.spec
 	@echo '' >> libyal-bundle.spec
+	@echo '%package        tools' >> libyal-bundle.spec
+	@echo 'Summary:        Command line tools for libyal libraries' >> libyal-bundle.spec
+	@echo 'Requires:       %{name}%{?_isa} = %{version}-%{release}' >> libyal-bundle.spec
+	@echo '' >> libyal-bundle.spec
+	@echo '%description    tools' >> libyal-bundle.spec
+	@echo 'The %{name}-tools package contains command line tools:' >> libyal-bundle.spec
+	@echo '- unabase: Unicode/ASCII base converter' >> libyal-bundle.spec
+	@echo '- unaexport: Unicode/ASCII string exporter' >> libyal-bundle.spec
+	@echo '' >> libyal-bundle.spec
 	@echo '%prep' >> libyal-bundle.spec
 	@echo '# Extract all sources' >> libyal-bundle.spec
 	@echo 'tar xzf %{SOURCE0}' >> libyal-bundle.spec
@@ -160,6 +169,11 @@ srpm:
 	@echo '%{_libdir}/lib*.so' >> libyal-bundle.spec
 	@echo '%{_libdir}/pkgconfig/*.pc' >> libyal-bundle.spec
 	@echo '%{_mandir}/man3/*.3*' >> libyal-bundle.spec
+	@echo '' >> libyal-bundle.spec
+	@echo '%files tools' >> libyal-bundle.spec
+	@echo '%{_bindir}/unabase' >> libyal-bundle.spec
+	@echo '%{_bindir}/unaexport' >> libyal-bundle.spec
+	@echo '%{_mandir}/man1/*.1*' >> libyal-bundle.spec
 	@echo '' >> libyal-bundle.spec
 	@echo '%changelog' >> libyal-bundle.spec
 	@echo '* Thu Jan 09 2025 COPR Builder - $(BUNDLE_VERSION)-1' >> libyal-bundle.spec
