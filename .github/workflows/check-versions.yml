@@ -22,7 +22,7 @@ jobs:
           LIBS="libcerror libcthreads libcdata libclocale libcnotify libuna libcfile libcpath libbfio libfcache libfguid"
           CHANGES=""
           for lib in $LIBS; do
-            LATEST=$(curl -sf "https://api.github.com/repos/libyal/$lib/releases/latest" | sed -n 's/.*"tag_name": *"\([^"]*\)".*/\1/p')
+            LATEST=$(curl -sf "https://api.github.com/repos/libyal/$lib/tags?per_page=1" | sed -n 's/.*"name": *"\([^"]*\)".*/\1/p')
             # Extract version variable name (uppercase)
             VAR=$(echo "$lib" | tr '[:lower:]' '[:upper:]' | tr '-' '_')_VERSION
             CURRENT=$(sed -n "s/^${VAR} = //p" .copr/Makefile)
