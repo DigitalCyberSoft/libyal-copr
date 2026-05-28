@@ -3,7 +3,7 @@
 
 # Version identifiers for each library
 # Note: Only including libraries that have actual GitHub releases
-LIBCERROR_VERSION = 20260513
+LIBCERROR_VERSION = 20260527
 LIBCTHREADS_VERSION = 20260518
 LIBCDATA_VERSION = 20260520
 LIBCLOCALE_VERSION = 20260520
@@ -16,7 +16,7 @@ LIBFCACHE_VERSION = 20260520
 LIBFGUID_VERSION = 20260521
 
 # Bundle version (use latest library date)
-BUNDLE_VERSION = 20260522
+BUNDLE_VERSION = 20260527
 
 # GitHub base URL
 GITHUB_URL = https://github.com/libyal
