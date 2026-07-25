@@ -18,16 +18,24 @@ jobs:
 
       - name: Check for new libyal releases
         id: check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           LIBS="libcerror libcthreads libcdata libclocale libcnotify libuna libcfile libcpath libbfio libfcache libfguid"
           CHANGES=""
           for lib in $LIBS; do
-            LATEST=$(curl -sf "https://api.github.com/repos/libyal/$lib/tags?per_page=1" | sed -n 's/.*"name": *"\([^"]*\)".*/\1/p')
+            LATEST=$(curl -sf -H "Authorization: Bearer ${GITHUB_TOKEN}" --connect-timeout 15 --max-time 60 --retry 3 --retry-all-errors "https://api.github.com/repos/libyal/$lib/tags?per_page=1" | sed -n 's/.*"name": *"\([^"]*\)".*/\1/p')
+            # Hard error: silently treating an API failure as "no change"
+            # would skip this library while the run reports success.
+            if [ -z "$LATEST" ]; then
+              echo "ERROR: could not determine latest $lib tag from GitHub API" >&2
+              exit 1
+            fi
             # Extract version variable name (uppercase)
             VAR=$(echo "$lib" | tr '[:lower:]' '[:upper:]' | tr '-' '_')_VERSION
             CURRENT=$(sed -n "s/^${VAR} = //p" .copr/Makefile)
             echo "$lib: latest=$LATEST current=$CURRENT"
-            if [ "$LATEST" != "$CURRENT" ] && [ -n "$LATEST" ]; then
+            if [ "$LATEST" != "$CURRENT" ]; then
               CHANGES="$CHANGES $lib:$VAR:$LATEST"
             fi
           done
@@ -38,11 +46,15 @@ jobs:
 
       - name: Update and push
         if: steps.check.outputs.changes == 'true'
+        env:
+          # env indirection keeps the upstream-controlled tag names out of
+          # shell interpolation (script-injection hardening)
+          UPDATES: ${{ steps.check.outputs.updates }}
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           LATEST_DATE=0
-          for update in ${{ steps.check.outputs.updates }}; do
+          for update in $UPDATES; do
             LIB=$(echo "$update" | cut -d: -f1)
             VAR=$(echo "$update" | cut -d: -f2)
             VER=$(echo "$update" | cut -d: -f3)
